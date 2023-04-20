@@ -29,9 +29,7 @@ function onSearch() {
       } else if (countries.length === 1) {
         renderCountryCard(countries);
       } else if (countries.length > 10) {
-        Notify.info(
-          'Too many matches found. Please enter a more specific name.'
-        );
+        onInfo();
       }
     })
     .catch(onError);
@@ -53,6 +51,12 @@ function renderCountryCard(countries) {
   refs.countryInfo.innerHTML = `<p>Capital: ${countries[0].capital}</p>
       <p>Population: ${countries[0].population}</p>
       <p>Languages: ${Object.values(countries[0].languages).join(', ')}</p>`;
+}
+
+function onInfo() {
+  refs.countryList.innerHTML = '';
+  refs.countryInfo.innerHTML = '';
+  Notify.info('Too many matches found. Please enter a more specific name.');
 }
 
 function onError() {
