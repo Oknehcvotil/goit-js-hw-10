@@ -56,5 +56,7 @@ function renderCountryCard(countries) {
 }
 
 function onError() {
+  refs.countryList.innerHTML = '';
+  refs.countryInfo.innerHTML = '';
   Notify.failure('Oops, there is no country with that name');
 }
